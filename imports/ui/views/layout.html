@@ -4,7 +4,7 @@
 
 		<header class="main-header">
 			<!-- Logo -->
-			<a href="{{ pathFor 'dashboard' }}" class="logo">
+			<a href="{{ pathFor 'public' }}" class="logo">
 				<!-- mini logo for sidebar mini 50x50 pixels -->
 				<span class="logo-mini"><b>W</b>T</span>
 				<!-- logo for regular state and mobile devices -->
@@ -67,7 +67,7 @@
 				<!-- sidebar menu: : style can be found in sidebar.less -->
 				<ul class="sidebar-menu">
 					<li>
-						<a href="{{ pathFor 'dashboard' }}">
+						<a href="{{ pathFor 'private' }}">
 							<i class="fa fa-dashboard"></i> <span>Dashboard</span>
 						</a>
 					</li>
@@ -87,7 +87,7 @@
 					<small>it all starts here</small>
 				</h1>
 				<ol class="breadcrumb">
-					<li><a href="{{pathFor 'index'}}"><i class="fa fa-dashboard"></i> Home</a></li>
+					<li><a href="{{pathFor 'private'}}"><i class="fa fa-dashboard"></i> Home</a></li>
 					<li><a href="#">Examples</a></li>
 					<li class="active">Blank page</li>
 				</ol>
@@ -95,7 +95,7 @@
 
 			<!-- Main content -->
 			<section class="content">
-				{{> Template.dynamic template=template}}
+				{{> Template.dynamic template=main}}
 			</section>
 			<!-- /.content -->
 		</div>

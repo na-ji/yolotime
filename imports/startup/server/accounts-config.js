@@ -1,3 +1,7 @@
+// import {Meteor} from 'meteor/meteor';
+import {Accounts} from 'meteor/accounts-base';
+
+// Update profile when user register
 Accounts.onCreateUser(function(options, user) {
 	if (options.profile) {
 		user.profile = options.profile;
@@ -14,8 +18,8 @@ Accounts.onCreateUser(function(options, user) {
 
 		if (user.emails === undefined) {
 			user.emails = [{
-				"address"  : user.services.wakatime.email,
-				"verified" : true
+				'address'  : user.services.wakatime.email,
+				'verified' : true
 			}];
 		}
 	}
