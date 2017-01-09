@@ -16,7 +16,8 @@ Common.deny = {
 
 Common.schema = new SimpleSchema({
     userId: {
-        type: String
+        type: String,
+        index: true
     },
     digital: {
         type: String
