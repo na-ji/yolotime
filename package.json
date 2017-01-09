@@ -1,0 +1,11 @@
+{
+  "name": "wakatime",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {
+    "babel-runtime": "^6.20.0"
+  },
+  "devDependencies": {},
+  "author": "Naji Astier <naji.astier@gmail.com> (https://www.naji-astier.com)",
+  "license": "WTFPL"
+}
