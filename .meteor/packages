@@ -39,6 +39,7 @@ naji:accounts-wakatime
 # Utils
 stevezhu:lodash
 momentjs:moment
+percolate:synced-cron
 
 # Collection
 aldeed:simple-schema
@@ -46,3 +47,4 @@ aldeed:collection2
 dburles:collection-helpers
 reywood:publish-composite
 tmeasday:publish-counts
+mdg:validation-error

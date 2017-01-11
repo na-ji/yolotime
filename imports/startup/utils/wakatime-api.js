@@ -1,7 +1,7 @@
 import { HTTP } from 'meteor/http';
 import { moment } from 'meteor/momentjs:moment';
 
-export cons WakatimeAPI = {};
+export const WakatimeAPI = {};
 
 WakatimeAPI.fetchSummaries = function (token, dateStart, dateEnd) {
 	let options = {
@@ -23,6 +23,6 @@ WakatimeAPI.fetchSummaries = function (token, dateStart, dateEnd) {
 
 		return false;
 	} catch (e) {
-		return e;
+		return false;
 	}
 }

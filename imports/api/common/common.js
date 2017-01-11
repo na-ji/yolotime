@@ -17,6 +17,7 @@ Common.deny = {
 Common.schema = new SimpleSchema({
     userId: {
         type: String,
+        optional: true,
         index: true
     },
     digital: {
@@ -28,10 +29,14 @@ Common.schema = new SimpleSchema({
     minutes: {
         type: Number
     },
+    seconds: {
+        type: Number,
+        optional: true
+    },
     name: {
         type: String,
-        index: true,
-		unique: true
+        optional: true,
+        index: true
     },
     percent: {
         type: Number,
@@ -45,23 +50,8 @@ Common.schema = new SimpleSchema({
         type: Number
     },
     date: {
-        type: Date
-    },
-    createdAt: {
         type: Date,
-        optional: true,
-        autoValue: function () {
-            if (!this.isSet && this.isInsert) {
-                return new Date();
-            }
-        }
-    },
-    lastUpdateAt: {
-        type: Date,
-        optional: true,
-        autoValue: function () {
-            return new Date();
-        }
+        optional: true
     }
 });
 
