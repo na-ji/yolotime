@@ -12,3 +12,6 @@ import '../../api/operating_systems/server/publications';
 
 // import '../../api/projects/methods';
 import '../../api/projects/server/publications';
+
+// import '../../api/grand_totals/methods';
+import '../../api/grand_totals/server/publications';
