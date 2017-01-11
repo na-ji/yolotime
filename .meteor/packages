@@ -38,6 +38,7 @@ naji:accounts-wakatime
 
 # Utils
 stevezhu:lodash
+momentjs:moment
 
 # Collection
 aldeed:simple-schema
