@@ -35,13 +35,17 @@ Common.schema = new SimpleSchema({
     },
     percent: {
         type: Number,
-        decimal: true
+        decimal: true,
+        optional: true
     },
     text: {
         type: String
     },
     total_seconds: {
         type: Number
+    },
+    date: {
+        type: Date
     },
     createdAt: {
         type: Date,
@@ -69,6 +73,7 @@ Common.publicFields = {
     percent: 1,
     text: 1,
     total_seconds: 1,
+    date: 1,
     createdAt: 1,
     lastUpdateAt: 1
 };
