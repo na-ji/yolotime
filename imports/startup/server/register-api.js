@@ -1,4 +1,4 @@
-// import '../../api/common/methods';
+import '../../api/common/methods';
 
 import '../../api/users/server/publications';
 import '../../api/editors/server/publications';

@@ -1,4 +1,5 @@
-import {SimpleSchema} from 'meteor/aldeed:simple-schema';
+import { Meteor } from 'meteor/meteor';
+import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
 Meteor.users.deny({
     insert() {
@@ -13,6 +14,9 @@ Meteor.users.deny({
 });
 
 Meteor.users.schema = new SimpleSchema({
+	_id: {
+		type: String
+	},
     username: {
         type: String,
         min: 3,

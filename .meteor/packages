@@ -38,7 +38,6 @@ naji:accounts-wakatime
 
 # Utils
 stevezhu:lodash
-momentjs:moment
 percolate:synced-cron
 
 # Collection

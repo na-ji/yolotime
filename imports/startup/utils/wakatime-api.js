@@ -1,5 +1,5 @@
 import { HTTP } from 'meteor/http';
-import { moment } from 'meteor/momentjs:moment';
+import moment from 'moment';
 
 export const WakatimeAPI = {};
 

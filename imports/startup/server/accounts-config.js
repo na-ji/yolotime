@@ -1,5 +1,8 @@
-// import {Meteor} from 'meteor/meteor';
-import {Accounts} from 'meteor/accounts-base';
+// import { Meteor } from 'meteor/meteor';
+import { Accounts } from 'meteor/accounts-base';
+import moment from 'moment';
+
+import { fetchSummaryData } from '../../api/common/methods';
 
 // Update profile when user register
 Accounts.onCreateUser(function(options, user) {
@@ -25,6 +28,21 @@ Accounts.onCreateUser(function(options, user) {
 	}
 
 	console.log(user);
+
+	let start = moment().subtract(7, 'days').toDate();
+	let end = moment();
+
+	if (end.hour() >= 23) {
+		end = end.toDate();
+	} else {
+		end = end.subtract(1, 'days').toDate();
+	}
+
+	fetchSummaryData.call({
+    	start: start,
+        end: end,
+        user: user
+    });
 
 	return user;
 });

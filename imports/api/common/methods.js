@@ -1,6 +1,7 @@
 import { PrivateMethod } from '../../startup/utils/private-method';
 import { _ } from 'meteor/stevezhu:lodash';
-import { moment } from 'meteor/momentjs:moment';
+import moment from 'moment-timezone';
+import { Meteor } from 'meteor/meteor';
 
 import { Editors } from '../editors/editors';
 import { GrandTotals } from '../grand_totals/grand_totals';
@@ -8,18 +9,20 @@ import { Languages } from '../languages/languages';
 import { OperatingSystems } from '../operating_systems/operating_systems';
 import { Projects } from '../projects/projects';
 import { Common } from './common';
+import { WakatimeAPI } from '../../startup/utils/wakatime-api';
+import '../users/users';
 
 let saveEntity = function (Entity, summaries, userId, date) {
 	_.forEach(summaries, function (summary) {
-		let alreadyExist = {
+		let query = {
 			userId,
-			date,
+			date
 		};
 		if (summary.name) {
-			alreadyExist.name = summary.name;
+			query.name = summary.name;
 		}
 
-		alreadyExist = Entity.findOne(alreadyExist);
+		let alreadyExist = Entity.findOne(query);
 
 		if (!alreadyExist) {
 			summary.date = date;
@@ -63,7 +66,7 @@ export const saveData = new PrivateMethod({
     },
     run({data, userId}) {
     	_.forEach(data, function (summaries) {
-			let date = moment(summaries.range.date).toDate();
+			let date = moment.tz(summaries.range.date, summaries.range.timezone).toDate();
 
 			saveEntity(Editors, summaries.editors, userId, date);
 			saveEntity(GrandTotals, [summaries.grand_total], userId, date);
@@ -73,3 +76,27 @@ export const saveData = new PrivateMethod({
     	});
     }
 });
+
+export const fetchSummaryData = new PrivateMethod({
+	schema: {
+		start: {
+			type: Date
+		},
+		end: {
+			type: Date
+		},
+		user: {
+			type: Meteor.users.schema
+		}
+	},
+    run({start, end, user}) {
+		let result = WakatimeAPI.fetchSummaries(user.services.wakatime.accessToken, start, end);
+
+		if (result) {
+            saveData.call({
+            	data: result.data,
+                userId: user._id
+            });
+		}
+    }
+})
